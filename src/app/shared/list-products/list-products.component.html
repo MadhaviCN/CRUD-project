@@ -1,0 +1,55 @@
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Price</th>
+    <th>Company</th>
+    <th>Date</th>
+    <th>Description</th>
+    <th>Actions</th>
+  </tr>
+  <tr *ngFor="let val of productList; let i = index">
+    <td>{{val.title}}</td>
+    <td>{{val.price}}</td>
+    <td>{{val.company}}</td>
+    <td>{{val.productdate | date}}</td>
+    <td>{{val.description}}</td>
+    <td>
+      <button class = "secondaryBtn" (click)="editRow(val)">Edit</button>
+      <button class = "secondaryBtn" (click)="deleteRow(val)">Delete</button>
+    </td>
+  </tr>
+</table>
+<!-- productList: {{productList | json}}
+dataSource: {{dataSource | json }}
+  <mat-table [dataSource]="productList" class="mat-elevation-z8">
+    <ng-container matColumnDef="title">
+      <mat-header-row *matHeaderRowDef> Title </mat-header-row>
+      <mat-row *matRowDef="let element"> {{element.title}} </mat-row>
+    </ng-container>
+
+    <ng-container matColumnDef="price">
+      <mat-header-row *matHeaderRowDef> Price </mat-header-row>
+      <mat-row *matRowDef="let element"> {{element.price}} </mat-row>
+    </ng-container>
+
+    <ng-container matColumnDef="company">
+      <mat-header-row *matHeaderRowDef> Company </mat-header-row>
+      <mat-row *matRowDef="let element"> {{element.company}} </mat-row>
+    </ng-container>
+
+    <ng-container matColumnDef="date">
+      <mat-header-row *matHeaderRowDef> Date </mat-header-row>
+      <mat-row *matRowDef="let element"> {{element.productdate}} </mat-row>
+    </ng-container>
+
+    <ng-container matColumnDef="description">
+      <mat-header-row *matHeaderRowDef> Description </mat-header-row>
+      <mat-row *matRowDef="let element"> {{element.description}} </mat-row>
+    </ng-container>
+
+    <ng-container matColumnDef="action">
+      <mat-header-row *matHeaderRowDef> Actions </mat-header-row>
+      <mat-row *matRowDef="let element"> <button (click)="editRow(val)">Edit</button> </mat-row>
+      <mat-row *matRowDef="let element"> <button (click)="deleteRow(val)">Delete</button> </mat-row>
+    </ng-container>
+  </mat-table> -->

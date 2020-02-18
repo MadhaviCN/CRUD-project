@@ -1,0 +1,57 @@
+<div class="col-md-12 col-sm-12 col-xs-12 mainDiv">
+  <h2>Add Products</h2>
+  <form [formGroup]="productForm">
+    <div class="form-group">
+      <mat-form-field>
+        <mat-label>Title</mat-label>
+        <input type="text" matInput formControlName="title" class="form-control" placeholder="Enter title"/>
+        <div *ngIf="submitted && formValue.title.errors">
+          <span *ngIf="formValue.title.errors.required">Please fill in title</span>
+        </div>
+      </mat-form-field>
+    </div>
+
+    <div class="form-group">
+        <mat-form-field>
+          <mat-label>Description</mat-label>
+          <input type="text" matInput formControlName="description" class="form-control" placeholder="Enter description"/>
+        </mat-form-field>
+    </div>
+
+    <div class="form-group">
+        <mat-form-field>
+          <mat-label>Price</mat-label>
+          <input type="number" matInput formControlName="price" class="form-control" placeholder="Enter price"/>
+          <div *ngIf="submitted && formValue.price.errors">
+            <span *ngIf="formValue.price.errors.required">Please fill in price</span>
+          </div>
+        </mat-form-field>
+    </div>
+
+    <div class="form-group">
+        <mat-form-field>
+          <mat-label>Company</mat-label>
+          <input type="text" matInput formControlName="company" class="form-control" placeholder="Enter company"/>
+          <div *ngIf="submitted && formValue.company.errors">
+            <span *ngIf="formValue.company.errors.required">Please fill in company name</span>
+          </div>
+        </mat-form-field>
+    </div>
+
+    <div class="form-group">
+      <mat-form-field>
+        <input matInput formControlName = "productdate" [matDatepicker] = "picker" placeholder = "Choose a date">
+        <mat-datepicker-toggle matSuffix [for] = "picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <div *ngIf="submitted && formValue.productdate.errors">
+            <span *ngIf="formValue.productdate.errors.required">Please fill in date</span>
+        </div>
+      </mat-form-field>
+    </div>
+
+    <button type="submit" class = "primaryBtn" (click)="submitForm()">{{buttonVal}}</button>
+  </form>
+  <div class = "listclass" >
+      <app-list-products [productList]="productAdded" (selectedRow)="updateProduct($event)" (deleteProd)="deleteProduct($event)"></app-list-products>
+  </div>
+</div> 
