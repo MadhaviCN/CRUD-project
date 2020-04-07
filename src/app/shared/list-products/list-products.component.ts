@@ -15,13 +15,13 @@ export class ListProductsComponent implements OnInit {
 
   @Output() deleteProd = new EventEmitter();
 
-  public dataSource;
+  @Output() prodFlag = new EventEmitter();
+
+  public lastSeen;
 
   constructor() { }
 
   ngOnInit() {
-    // this.dataSource = new MatTableDataSource<Product>(this.productList);
-    // console.log('this.dataSource' + this.productList);
   }
 
   /**
@@ -31,7 +31,8 @@ export class ListProductsComponent implements OnInit {
    * memberof ListProductsComponent
    */
   editRow(row) {
-    this.selectedRow.emit(row);
+    this.lastSeen = new Date(row.productdate);
+    this.selectedRow = row;
   }
 
   /**
@@ -41,6 +42,10 @@ export class ListProductsComponent implements OnInit {
    * memberof ListProductsComponent
    */
   deleteRow(row) {
-    this.deleteProd.emit(row);
+    this.deleteProd = row;
+  }
+
+  createNewProduct() {
+    this.prodFlag.emit(true);
   }
 }

@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { StoreModule } from '@ngrx/store';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import {
   MatFormFieldModule, MatInputModule,
   MatTableModule, MatDatepickerModule, MatNativeDateModule
@@ -15,12 +16,14 @@ import { AppComponent } from './app.component';
 import { AddProductComponent } from './products/add-product/add-product.component';
 import { ListProductsComponent } from './shared/list-products/list-products.component';
 import { ProductsService } from './core/services/products.service';
+import { AddNewProductComponent } from './shared/add-new-product/add-new-product.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AddProductComponent,
-    ListProductsComponent
+    ListProductsComponent,
+    AddNewProductComponent
   ],
   imports: [
     BrowserModule,
@@ -29,6 +32,7 @@ import { ProductsService } from './core/services/products.service';
     ReactiveFormsModule,
     MatFormFieldModule, MatInputModule, MatTableModule, MatDatepickerModule, MatNativeDateModule,
     BrowserAnimationsModule,
+    AngularFontAwesomeModule,
     StoreModule.forRoot({})
   ],
   providers: [Store, ProductsService],

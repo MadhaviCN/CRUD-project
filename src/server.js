@@ -2,7 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var mongo = require('mongoose');
 
-var db = mongo.connect('mongodb://localhost:27017/Angular-project', function(err, resp) {
+var db = mongo.connect('mongodb://localhost:27017/Developer-Challenge', function(err, resp) {
     if(err) {
         console.log(err);
     } else {
@@ -26,11 +26,10 @@ app.use(function(req, res, next) {
 var Schema = mongo.Schema;
 
 var ProductSchema = new Schema({
-    title: {type: String},
-    price: {type: String},
-    company: {type: String},
-    productdate: {type: String},
-    description: {type: String}
+    device_id: {type: String},
+    device_type: {type: String},
+    device_risk: {type: String},
+    productdate: {type: String}
 }, {versionKey: false});
 
 var model = mongo.model('products', ProductSchema, 'products')
@@ -46,7 +45,7 @@ app.post('/api/addProducts', function(req, res) {
             }
         })
     } else {
-        model.updateOne({_id: req.body.id}, {title: req.body.title, price: req.body.price, company: req.body.company, productdate: req.body.productdate, description: req.body.description}, function(err, data) {
+        model.updateOne({_id: req.body.id}, {device_id: req.body.device_id, device_type: req.body.device_type, device_risk: req.body.device_risk, productdate: req.body.productdate}, function(err, data) {
             if(err) {
                 res.send(err);
             } else {
